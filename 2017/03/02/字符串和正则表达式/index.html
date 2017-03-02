@@ -6,17 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/Fawziasfq">
-  <title>Archives: 2017 | 孙凤琴的博客</title>
+  <title>字符串和正则表达式 | 孙凤琴的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好好学习，天天向上">
-<meta property="og:type" content="website">
-<meta property="og:title" content="孙凤琴的博客">
-<meta property="og:url" content="https://github.com/Fawziasfq/archives/2017/index.html">
+  <meta name="description" content="几乎所有的javascript程序都与字符串操作密切相关，一个典型的应用程序通常需要处理大量类似合并、分割、重新排序、搜索、遍历等字符串操作。
+字符串连接字符串链接会导致令人惊讶的性能问题。构建字符串的常用方法是：通过循环，向字符串末尾不断地添加内容。有很多方法可以优化这类任何，多种方法合并字符串：
+
+the + operator
+the += operator
+array.join()
+stri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串和正则表达式">
+<meta property="og:url" content="https://github.com/Fawziasfq/2017/03/02/字符串和正则表达式/index.html">
 <meta property="og:site_name" content="孙凤琴的博客">
-<meta property="og:description" content="好好学习，天天向上">
+<meta property="og:description" content="几乎所有的javascript程序都与字符串操作密切相关，一个典型的应用程序通常需要处理大量类似合并、分割、重新排序、搜索、遍历等字符串操作。
+字符串连接字符串链接会导致令人惊讶的性能问题。构建字符串的常用方法是：通过循环，向字符串末尾不断地添加内容。有很多方法可以优化这类任何，多种方法合并字符串：
+
+the + operator
+the += operator
+array.join()
+stri">
+<meta property="og:updated_time" content="2017-03-02T13:59:25.331Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="孙凤琴的博客">
-<meta name="twitter:description" content="好好学习，天天向上">
+<meta name="twitter:title" content="字符串和正则表达式">
+<meta name="twitter:description" content="几乎所有的javascript程序都与字符串操作密切相关，一个典型的应用程序通常需要处理大量类似合并、分割、重新排序、搜索、遍历等字符串操作。
+字符串连接字符串链接会导致令人惊讶的性能问题。构建字符串的常用方法是：通过循环，向字符串末尾不断地添加内容。有很多方法可以优化这类任何，多种方法合并字符串：
+
+the + operator
+the += operator
+array.join()
+stri">
   
     <link rel="alternative" href="/atom.xml" title="孙凤琴的博客" type="application/atom+xml">
   
@@ -152,103 +171,157 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-字符串和正则表达式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      字符串和正则表达式
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/02/字符串和正则表达式/" class="archive-article-date">
+
+        
+        <a href="/2017/03/02/字符串和正则表达式/" class="archive-article-date">
   	<time datetime="2017-03-02T13:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/02/字符串和正则表达式/">字符串和正则表达式</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>几乎所有的javascript程序都与字符串操作密切相关，一个典型的应用程序通常需要处理大量类似合并、分割、重新排序、搜索、遍历等字符串操作。</p>
+<h2 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h2><p>字符串链接会导致令人惊讶的性能问题。构建字符串的常用方法是：通过循环，向字符串末尾不断地添加内容。<br>有很多方法可以优化这类任何，多种方法合并字符串：</p>
+<ul>
+<li>the + operator</li>
+<li>the += operator</li>
+<li>array.join()</li>
+<li>string.concat()</li>
+</ul>
+<p>这类方法运行速度都很快，随着需要合并的字符串的长度和数量的增加，一些方法的优势开始展现。</p>
+<h3 id="加和加等操作符"><a href="#加和加等操作符" class="headerlink" title="加和加等操作符"></a>加和加等操作符</h3><p>除了IE7及之前的版本的所有浏览器都对它们进行了良好的优化。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>灰常感谢各位大老爷们儿<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/tencentpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/Fawziasfq/2017/03/02/字符串和正则表达式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/我的第一篇文章/" class="archive-article-date">
-  	<time datetime="2017-03-01T07:37:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/我的第一篇文章/">我的第一篇文章</a>
-    </h1>
+  
+    <a href="/2017/03/01/我的第一篇文章/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的第一篇文章</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-01T07:32:19.559Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -271,8 +344,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
