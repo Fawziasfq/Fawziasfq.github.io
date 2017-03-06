@@ -6,17 +6,39 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/Fawziasfq">
-  <title>Archives: 2017/3 | 孙凤琴的博客</title>
+  <title>重绘和重排的性能优化 | 孙凤琴的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="好好学习，天天向上">
-<meta property="og:type" content="website">
-<meta property="og:title" content="孙凤琴的博客">
-<meta property="og:url" content="https://github.com/Fawziasfq/archives/2017/03/index.html">
+  <meta name="description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。
+重绘：如果DOM变化仅仅只是影响了背景色等等非几何属性，就发生的是重绘而不是重排，因为布局没有发生变化。
+触发重排页面布局和几何属性的变化：
+
+页面初始渲染；
+添加/删除可见的DOM元素；
+改变元素的位置；
+改变元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重绘和重排的性能优化">
+<meta property="og:url" content="https://github.com/Fawziasfq/2017/03/06/重绘和重排的性能优化/index.html">
 <meta property="og:site_name" content="孙凤琴的博客">
-<meta property="og:description" content="好好学习，天天向上">
+<meta property="og:description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。
+重绘：如果DOM变化仅仅只是影响了背景色等等非几何属性，就发生的是重绘而不是重排，因为布局没有发生变化。
+触发重排页面布局和几何属性的变化：
+
+页面初始渲染；
+添加/删除可见的DOM元素；
+改变元素的位置；
+改变元">
+<meta property="og:updated_time" content="2017-03-06T14:18:27.850Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="孙凤琴的博客">
-<meta name="twitter:description" content="好好学习，天天向上">
+<meta name="twitter:title" content="重绘和重排的性能优化">
+<meta name="twitter:description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。
+重绘：如果DOM变化仅仅只是影响了背景色等等非几何属性，就发生的是重绘而不是重排，因为布局没有发生变化。
+触发重排页面布局和几何属性的变化：
+
+页面初始渲染；
+添加/删除可见的DOM元素；
+改变元素的位置；
+改变元">
   
     <link rel="alternative" href="/atom.xml" title="孙凤琴的博客" type="application/atom+xml">
   
@@ -148,130 +170,173 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-重绘和重排的性能优化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      重绘和重排的性能优化
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/06/重绘和重排的性能优化/" class="archive-article-date">
+
+        
+        <a href="/2017/03/06/重绘和重排的性能优化/" class="archive-article-date">
   	<time datetime="2017-03-06T14:17:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/06/重绘和重排的性能优化/">重绘和重排的性能优化</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>重排</strong>：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。</p>
+<p><strong>重绘</strong>：如果DOM变化仅仅只是影响了背景色等等非几何属性，就发生的是重绘而不是重排，因为布局没有发生变化。</p>
+<h3 id="触发重排"><a href="#触发重排" class="headerlink" title="触发重排"></a>触发重排</h3><p>页面布局和几何属性的变化：</p>
+<ul>
+<li>页面初始渲染；</li>
+<li>添加/删除可见的DOM元素；</li>
+<li>改变元素的位置；</li>
+<li>改变元素的尺寸；</li>
+<li>改变元素内容；</li>
+<li>改变窗口尺寸；</li>
+</ul>
+<p>不同情况下发生的重排的范围及程度不同，某些情况下会重排整个页面，比如滑动滚动条。</p>
+<h3 id="浏览器的优化：渲染队列"><a href="#浏览器的优化：渲染队列" class="headerlink" title="浏览器的优化：渲染队列"></a>浏览器的优化：渲染队列</h3><p>现代浏览器都有渲染队列的机制，当改变元素的一个样式会导致浏览器发生重排或重绘时，它会进入一个渲染队列，然后如果后面还有样式修改，同样入队，知道没有样式修改，按照渲染队列批量执行来重排过程，一并修改样式，这样就把本该几次的重排优化成了一次。</p>
+<p>但是offset-，会强制刷新队列要求样式修改任务立即执行。<br><strong>会刷新渲染队列</strong></p>
+<ul>
+<li>offset-</li>
+<li>client-</li>
+<li>scroll-</li>
+<li>getComputedStyle()（IE中的currentStyle）</li>
+</ul>
+<h3 id="重绘和重排的性能优化"><a href="#重绘和重排的性能优化" class="headerlink" title="重绘和重排的性能优化"></a>重绘和重排的性能优化</h3><h4 id="分离读写操作"><a href="#分离读写操作" class="headerlink" title="分离读写操作"></a>分离读写操作</h4><p>把读操作移到写操作后，TRBL这这些操作写到一起，offset的操作写到一起，这样就会几次重排合成一次重排。</p>
+<h4 id="样式集中改变"><a href="#样式集中改变" class="headerlink" title="样式集中改变"></a>样式集中改变</h4><ul>
+<li>javascript中改变样式直接用cssText属性合并所有样式改变。这样就只会触发依次重排。<br>但是cssText会覆盖已有的行间样式，所以要保留原有的行间样式就使用 <strong>“+=”</strong></li>
+<li>修改class类名来进行样式修改。</li>
+</ul>
+<h3 id="缓存布局信息"><a href="#缓存布局信息" class="headerlink" title="缓存布局信息"></a>缓存布局信息</h3><p>分离读写操作</p>
+<h3 id="元素批量修改"><a href="#元素批量修改" class="headerlink" title="元素批量修改"></a>元素批量修改</h3>
+      
 
-        <div class="article-info info-on-right">
-          
-          
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>灰常感谢各位大老爷们儿<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/tencentpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/Fawziasfq/2017/03/06/重绘和重排的性能优化/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/02/字符串和正则表达式/" class="archive-article-date">
-  	<time datetime="2017-03-02T13:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/02/字符串和正则表达式/">字符串和正则表达式</a>
-    </h1>
+  
+    <a href="/2017/03/02/字符串和正则表达式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">字符串和正则表达式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/我的第一篇文章/" class="archive-article-date">
-  	<time datetime="2017-03-01T07:37:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/我的第一篇文章/">我的第一篇文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-01T07:32:19.559Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -294,8 +359,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
