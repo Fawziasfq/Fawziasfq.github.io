@@ -8,37 +8,16 @@
   <link rel="dns-prefetch" href="https://github.com/Fawziasfq">
   <title>重绘和重排的性能优化 | 孙凤琴的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。
-重绘：如果DOM变化仅仅只是影响了背景色等等非几何属性，就发生的是重绘而不是重排，因为布局没有发生变化。
-触发重排页面布局和几何属性的变化：
-
-页面初始渲染；
-添加/删除可见的DOM元素；
-改变元素的位置；
-改变元">
+  <meta name="description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重绘和重排的性能优化">
 <meta property="og:url" content="https://github.com/Fawziasfq/2017/03/06/重绘和重排的性能优化/index.html">
 <meta property="og:site_name" content="孙凤琴的博客">
-<meta property="og:description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。
-重绘：如果DOM变化仅仅只是影响了背景色等等非几何属性，就发生的是重绘而不是重排，因为布局没有发生变化。
-触发重排页面布局和几何属性的变化：
-
-页面初始渲染；
-添加/删除可见的DOM元素；
-改变元素的位置；
-改变元">
-<meta property="og:updated_time" content="2017-03-06T14:18:27.850Z">
+<meta property="og:description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。">
+<meta property="og:updated_time" content="2017-03-07T12:33:00.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重绘和重排的性能优化">
-<meta name="twitter:description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。
-重绘：如果DOM变化仅仅只是影响了背景色等等非几何属性，就发生的是重绘而不是重排，因为布局没有发生变化。
-触发重排页面布局和几何属性的变化：
-
-页面初始渲染；
-添加/删除可见的DOM元素；
-改变元素的位置；
-改变元">
+<meta name="twitter:description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。">
   
     <link rel="alternative" href="/atom.xml" title="孙凤琴的博客" type="application/atom+xml">
   
@@ -191,6 +170,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>重排</strong>：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。</p>
+<a id="more"></a>
 <p><strong>重绘</strong>：如果DOM变化仅仅只是影响了背景色等等非几何属性，就发生的是重绘而不是重排，因为布局没有发生变化。</p>
 <h3 id="触发重排"><a href="#触发重排" class="headerlink" title="触发重排"></a>触发重排</h3><p>页面布局和几何属性的变化：</p>
 <ul>
