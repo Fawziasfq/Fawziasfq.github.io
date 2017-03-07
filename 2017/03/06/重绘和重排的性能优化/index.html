@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://github.com/Fawziasfq/2017/03/06/重绘和重排的性能优化/index.html">
 <meta property="og:site_name" content="孙凤琴的博客">
 <meta property="og:description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。">
-<meta property="og:updated_time" content="2017-03-07T12:33:00.946Z">
+<meta property="og:updated_time" content="2017-03-07T12:47:35.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重绘和重排的性能优化">
 <meta name="twitter:description" content="重排：当DOM变化影响了元素的几何属性，页面中的其他元素的集合属性也可能会受影响，浏览器就需要重新计算元素的几何属性，这样渲染树就发生了变化，也就是重新构造了渲染树，这个过程叫做重排。">
@@ -235,6 +235,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -403,6 +418,14 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
