@@ -12,8 +12,7 @@
 概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。
 
 对于端口和协议的不同，只能通过后台来解决。
-如何解决跨域问题？1.通过jsonp跨域
-jsonp：是资料格式的一种“使用模式”，可以让网页从别的网域获取资料；也叫做填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON。是一种非正式协议，该协议的一个要点就是允许用户传递一个callback参">
+如何解决跨域问题？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决跨域问题的N种方法">
 <meta property="og:url" content="https://github.com/Fawziasfq/2017/03/11/解决跨域问题的N种方法/index.html">
@@ -22,17 +21,15 @@ jsonp：是资料格式的一种“使用模式”，可以让网页从别的网
 概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。
 
 对于端口和协议的不同，只能通过后台来解决。
-如何解决跨域问题？1.通过jsonp跨域
-jsonp：是资料格式的一种“使用模式”，可以让网页从别的网域获取资料；也叫做填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON。是一种非正式协议，该协议的一个要点就是允许用户传递一个callback参">
-<meta property="og:updated_time" content="2017-03-11T12:34:01.237Z">
+如何解决跨域问题？">
+<meta property="og:updated_time" content="2017-03-11T12:35:32.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决跨域问题的N种方法">
 <meta name="twitter:description" content="1.什么是跨域
 概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。
 
 对于端口和协议的不同，只能通过后台来解决。
-如何解决跨域问题？1.通过jsonp跨域
-jsonp：是资料格式的一种“使用模式”，可以让网页从别的网域获取资料；也叫做填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON。是一种非正式协议，该协议的一个要点就是允许用户传递一个callback参">
+如何解决跨域问题？">
   
     <link rel="alternative" href="/atom.xml" title="孙凤琴的博客" type="application/atom+xml">
   
@@ -188,9 +185,10 @@ jsonp：是资料格式的一种“使用模式”，可以让网页从别的网
 <p>概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。</p>
 </blockquote>
 <p>对于端口和协议的不同，只能通过后台来解决。</p>
-<h3 id="如何解决跨域问题？"><a href="#如何解决跨域问题？" class="headerlink" title="如何解决跨域问题？"></a>如何解决跨域问题？</h3><h4 id="1-通过jsonp跨域"><a href="#1-通过jsonp跨域" class="headerlink" title="1.通过jsonp跨域"></a>1.通过jsonp跨域</h4><blockquote>
-<p>jsonp：是资料格式的一种“使用模式”，可以让网页从别的网域获取资料；<br>也叫做填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON。<br>是一种非正式协议，该协议的一个要点就是允许用户传递一个callback参数给服务器端，然后服务器端返回数据时会将这个callback参数座位函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。<br><a id="more"></a><br>原理是：动态插入script标签，通过script标签引入一个js文件，这个js文件载入成功后会执行我们在url参数中指定的函数，并且会把我们需要的json数据作为参数传入。</p>
+<h3 id="如何解决跨域问题？"><a href="#如何解决跨域问题？" class="headerlink" title="如何解决跨域问题？"></a>如何解决跨域问题？<a id="more"></a></h3><h4 id="1-通过jsonp跨域"><a href="#1-通过jsonp跨域" class="headerlink" title="1.通过jsonp跨域"></a>1.通过jsonp跨域</h4><blockquote>
+<p>jsonp：是资料格式的一种“使用模式”，可以让网页从别的网域获取资料；<br>也叫做填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON。<br>是一种非正式协议，该协议的一个要点就是允许用户传递一个callback参数给服务器端，然后服务器端返回数据时会将这个callback参数座位函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p>
 </blockquote>
+<p>原理是：动态插入script标签，通过script标签引入一个js文件，这个js文件载入成功后会执行我们在url参数中指定的函数，并且会把我们需要的json数据作为参数传入。</p>
 <p>由于同源策略的限制，XmlHttpRequest只允许请求当前源（域名、协议、端口）的资源，为了实现跨域请求，可以通过script标签实现跨域请求，然后在服务端输出JSON数据并执行回调函数，从而解决了跨域的数据请求。</p>
 <p>优点是兼容性好，简单易用，支持浏览器与服务器双向通信。缺点是只支持GET请求。</p>
 <p>JSONP：json+padding（内填充），顾名思义，就是把JSON填充到一个盒子里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    function createJs(sUrl)&#123;</div><div class="line"></div><div class="line">        var oScript = document.createElement(&apos;script&apos;);</div><div class="line">        oScript.type = &apos;text/javascript&apos;;</div><div class="line">        oScript.src = sUrl;</div><div class="line">        document.getElementsByTagName(&apos;head&apos;)[0].appendChild(oScript);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    createJs(&apos;jsonp.js&apos;);</div><div class="line"></div><div class="line">    box(&#123;</div><div class="line">       &apos;name&apos;: &apos;test&apos;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    function box(json)&#123;</div><div class="line">        alert(json.name);</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
@@ -435,15 +433,15 @@ jsonp：是资料格式的一种“使用模式”，可以让网页从别的网
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">工具学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">工具学习</a>
               </li>
             
             <div class="clearfix"></div>
