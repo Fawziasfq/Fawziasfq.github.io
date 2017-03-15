@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/Fawziasfq">
-  <title>Archives: 2017/3 | 孙凤琴的博客</title>
+  <title>图片画廊案例详解 | 孙凤琴的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="少壮不努力，老大徒伤悲。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="孙凤琴的博客">
-<meta property="og:url" content="https://github.com/Fawziasfq/archives/2017/03/index.html">
+  <meta name="description" content="实现方式：CSS3+JS实现海报画廊：CSS来制作效果，JS输出HTML和控制切换
+区域模块分解按照空间区域，对复杂的案例效果，分解为几个角简单的模块部分。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图片画廊案例详解">
+<meta property="og:url" content="https://github.com/Fawziasfq/2017/03/15/图片画廊案例详解/index.html">
 <meta property="og:site_name" content="孙凤琴的博客">
-<meta property="og:description" content="少壮不努力，老大徒伤悲。">
+<meta property="og:description" content="实现方式：CSS3+JS实现海报画廊：CSS来制作效果，JS输出HTML和控制切换
+区域模块分解按照空间区域，对复杂的案例效果，分解为几个角简单的模块部分。">
+<meta property="og:updated_time" content="2017-03-15T13:34:00.924Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="孙凤琴的博客">
-<meta name="twitter:description" content="少壮不努力，老大徒伤悲。">
+<meta name="twitter:title" content="图片画廊案例详解">
+<meta name="twitter:description" content="实现方式：CSS3+JS实现海报画廊：CSS来制作效果，JS输出HTML和控制切换
+区域模块分解按照空间区域，对复杂的案例效果，分解为几个角简单的模块部分。">
   
     <link rel="alternative" href="/atom.xml" title="孙凤琴的博客" type="application/atom+xml">
   
@@ -148,36 +152,133 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-图片画廊案例详解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/15/图片画廊案例详解/" class="archive-article-date">
-  	<time datetime="2017-03-15T13:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/15/图片画廊案例详解/">图片画廊案例详解</a>
+    <h1 class="article-title" itemprop="name">
+      图片画廊案例详解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/15/图片画廊案例详解/" class="archive-article-date">
+  	<time datetime="2017-03-15T13:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实现方式："><a href="#实现方式：" class="headerlink" title="实现方式："></a>实现方式：</h2><p>CSS3+JS实现海报画廊：CSS来制作效果，JS输出HTML和控制切换</p>
+<h2 id="区域模块分解"><a href="#区域模块分解" class="headerlink" title="区域模块分解"></a>区域模块分解</h2><p>按照空间区域，对复杂的案例效果，分解为几个角简单的模块部分。</p>
+<a id="more"></a>
+<h3 id="当前展现的海报区"><a href="#当前展现的海报区" class="headerlink" title="当前展现的海报区"></a>当前展现的海报区</h3><ul>
+<li>水平垂直居中</li>
+<li>允许&lt;控制条按钮&gt;控制展现&amp;翻转</li>
+</ul>
+<h3 id="左右存放区"><a href="#左右存放区" class="headerlink" title="左右存放区"></a>左右存放区</h3><ul>
+<li>以&lt;当前展现的海报区&gt;切分为左右区域</li>
+<li>作用是存放其他的海报</li>
+<li>每个海报位置随机，角度随机</li>
+</ul>
+<h3 id="控制条区"><a href="#控制条区" class="headerlink" title="控制条区"></a>控制条区</h3><ul>
+<li>控制&amp;展现对应的海报</li>
+<li>翻面切换&lt;当前展现&gt;的海报它的正反面</li>
+</ul>
+<h2 id="VCD分解"><a href="#VCD分解" class="headerlink" title="VCD分解"></a>VCD分解</h2><p>V(view视觉)：HTML+CSS基本的界面模板<br>C(Controller控制)：javascript内容处理，事件处理<br>D(Data)：data.js非必须，助于理解</p>
+<h3 id="view视觉"><a href="#view视觉" class="headerlink" title="view视觉"></a>view视觉</h3><ul>
+<li>div.wrap:整个海报画廊的框架</li>
+<li>div.photo：海报</li>
+<li>div.photo.photo_center：中间的海报</li>
+<li>div.side.side-font：海报前面</li>
+<li>div.side.side-back：海报后面</li>
+<li>p.desc：后面的描述性信息</li>
+<li>p.img：海报内容图片</li>
+<li>p.caption：海报上的字</li>
+<li>div.nav：控制条区域</li>
+<li>span.i：控制按钮</li>
+</ul>
+<h3 id="Data数据"><a href="#Data数据" class="headerlink" title="Data数据"></a>Data数据</h3><ul>
+<li>图片(i name.jpg)</li>
+<li>data.js（var data = [{},…];）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">caption:&quot;name&quot;</div><div class="line">desc:&quot;description&quot;</div><div class="line">img:&quot;url&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>处理代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">data.js</div><div class="line"></div><div class="line">var data = [];</div><div class="line">var dataStr = &apos;</div><div class="line">1、霍比特人3&lt;br&gt;\</div><div class="line">&lt;br&gt;\</div><div class="line">导演：彼得杰克逊&lt;br&gt;\</div><div class="line">编剧：……&lt;br&gt;\</div><div class="line">主演：……&lt;br&gt;\</div><div class="line">类型：……&lt;br&gt;\</div><div class="line">制片国家/地区：……&lt;br&gt;\</div><div class="line">语言：……&lt;br&gt;\</div><div class="line">上映日期：……&lt;br&gt;\</div><div class="line">片长：……&lt;br&gt;\</div><div class="line">&lt;br&gt;\</div><div class="line">&lt;br&gt;\</div><div class="line">2、……...//定义的字符串</div><div class="line">&apos;</div><div class="line"></div><div class="line">var d = dataStr.split(&apos;&lt;br&gt;&lt;br&gt;&lt;br&gt;&apos;)//将每张照片的信息存到数组中去</div><div class="line">for(var i = 0;i&lt;d.length;i++)&#123;</div><div class="line">    var c = d[i].split(&apos;&lt;br&gt;&lt;br&gt;&apos;);//将标题和内容分开</div><div class="line">    data.push(&#123;</div><div class="line">        img:c[0].replace(&apos;、&apos;,&apos; &apos;)+&apos;.jpg&apos;,//将标题的顿号换成空格加上&quot;.jpg&quot;</div><div class="line">        caption:c[0].split(&apos;、&apos;)[1],//将标题设置为顿号后面的</div><div class="line">        desc:c[1]//描述</div><div class="line">    &#125;);</div><div class="line">    console.log(c[0].replace(&apos;、&apos;,&apos; &apos;)+&apos;.jpg&apos;);//打印出图片名</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Controller控制"><a href="#Controller控制" class="headerlink" title="Controller控制"></a>Controller控制</h3><ul>
+<li>输出所有海报内容（视图模板+数据）</li>
+<li>位置分配控制（中央位置、两边位置）</li>
+<li>控制条输出&amp;控制（切换、翻面）</li>
+</ul>
+<h2 id="代码编写"><a href="#代码编写" class="headerlink" title="代码编写"></a>代码编写</h2><h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/*wrap垂直居中*/</div><div class="line">width:100%;</div><div class="line">height:600px;</div><div class="line">position:absolute;</div><div class="line">top:50%;</div><div class="line">margin-top:-300px;</div></pre></td></tr></table></figure>
+<h3 id="基本界面编写"><a href="#基本界面编写" class="headerlink" title="基本界面编写"></a>基本界面编写</h3><ul>
+<li><p>字体</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-webkit-font-smoothing:antialiased;//字体平滑</div></pre></td></tr></table></figure>
+</li>
+<li><p>盒模型（图片超出边框），可以修改图片的大小，但是如果修改了就会造成最后图片大小不会岁边框大小变化，所以设置盒模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">box-sizing:border-box;//可令浏览器呈现出带有指定宽度和高度的框，并把边框和内边距放入框中。</div></pre></td></tr></table></figure>
+</li>
+<li><p>水平垂直居中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">width:260px;</div><div class="line">height:320px;</div><div class="line">left:50%;</div><div class="line">top:50%;</div><div class="line">margin-left:-160px;</div><div class="line">margin-top:-130px;</div><div class="line">z-index:999;</div></pre></td></tr></table></figure>
+</li>
+<li><p>photo负责平移和旋转，.photo-wrap负责3D翻转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*wrap*/</div><div class="line">-webkit-perspective:800;//支持3D效果</div><div class="line">/*photo-wrap*/</div><div class="line">-webkit-transform-style:preserve-3d;//支持子元素的3D效果</div><div class="line">/*side-front和side-back*/</div><div class="line">-webkit-transform:rotateY(0deg/180deg</div><div class="line">-webkit-transform:translate(0px,0px) rotateY(0deg);//定义位移以及沿着Y轴旋转</div><div class="line">/*.side*/</div><div class="line">-webkit-backface-visibility:hidden;//定义元素不面向屏幕时不可见</div></pre></td></tr></table></figure>
+</li>
+<li><p>过渡动画</p>
+<ul>
+<li>transition:property duration timing-function delay;</li>
+<li>property:规定设置过渡效果的CSS属性的名称；</li>
+<li>duration：规定完成过渡效果需要多少秒或者毫秒；</li>
+<li>timing-function：规定速度效果的速度曲线，默认ease；</li>
+<li>delay：定义过渡效果延迟多久开始，默认0。</li>
+</ul>
+</li>
+</ul>
+<h2 id="脚本操作"><a href="#脚本操作" class="headerlink" title="脚本操作"></a>脚本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">//1、翻面控制</div><div class="line">function turn(elem)&#123;</div><div class="line">    var cls = elem.className;</div><div class="line">    if(/photo_front/.test(cls))&#123;</div><div class="line">        cls = cls.replace(&apos;/photo_front/&apos;,&apos;front_back&apos;);</div><div class="line">    &#125;else&#123;</div><div class="line">        cls = cls.replace(&apos;/photo_back/&apos;,&apos;front_front&apos;);</div><div class="line">    &#125;</div><div class="line">    return elem.className = cls;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//2.源码输出</div><div class="line">data.js</div><div class="line"></div><div class="line">模板字符串：</div><div class="line">利用已经编写好的视图，隐藏起来，然后使用innerHTML获得其源码字符串。</div><div class="line">关键字替换：</div><div class="line">遍历数据，且从源码字符串中的数据部分替换为真实的数据。</div><div class="line">拼接好最终内容的HTML字符串回写（回写到.wrap中）</div><div class="line">//通用函数</div><div class="line">function g(selector)&#123;</div><div class="line">    var method = selector.substr(0,1) == &apos;.&apos;?&apos;getElementsByClassName&apos;:&apos;getElementById&apos;;</div><div class="line">    return document[method](selector.substr(1));</div><div class="line">&#125;</div><div class="line"></div><div class="line">//输出所有的海报</div><div class="line">var data = data;</div><div class="line">function addPhotos()&#123;</div><div class="line">    var template = g(&apos;#wrap&apos;).innerHTML;</div><div class="line">    var html = [];</div><div class="line">    </div><div class="line">    for( s in data)&#123;</div><div class="line">        var _html = template</div><div class="line">                            .replace(&apos;&#123;&#123;index&#125;&#125;&apos;,s)</div><div class="line">                            .replace(&apos;&#123;&#123;img&#125;&#125;&apos;,data[s].img)</div><div class="line">                            .replace(&apos;&#123;&#123;caption&#125;&#125;&apos;,data[s].caption)</div><div class="line">                            .replace(&apos;&#123;&#123;desc&#125;&#125;&apos;,data[s].desc)</div><div class="line">        html.push(_html);</div><div class="line">    &#125;</div><div class="line">    g(&apos;#wrap&apos;).innerHTML = html.join();</div><div class="line">    </div><div class="line">    rsort(random([0,data.length]));</div><div class="line">&#125;</div><div class="line">//随机生成一个值,支持取值范围。random([min,max])</div><div class="line">function random(range)&#123;</div><div class="line">    var max = Math.max(range[0],range[1]);</div><div class="line">    var max = Math.min(range[0],range[1]);</div><div class="line">    </div><div class="line">    var diff = max - min;//</div><div class="line">    </div><div class="line">    var number =Math.ceil( Math.random()*diff+min);</div><div class="line">    return number;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//6.计算左右分区的范围</div><div class="line">function range()&#123;</div><div class="line">    var range = &#123;left:&#123;x:[],y:[]&#125;,right:&#123;x:[],y:[]&#125;&#125;;</div><div class="line">    </div><div class="line">          </div><div class="line">    return range;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//排序海报</div><div class="line">function rsort(n)&#123;</div><div class="line">    var _photo = g(&apos;.photo&apos;);//一个变量不常用就在前面加上下划线的形式命名</div><div class="line">    var photos = [];</div><div class="line">    for(s = 0;s &lt;_photo.length;s++)&#123;</div><div class="line">        _photo[s].className = _photo[s].className.replace(/\s*photo_center\s*/,&apos; &apos;);</div><div class="line">        photos.push(_photo[s]);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    var photo_center = g(&apos;#photo_&apos;+n);</div><div class="line">    photo_center.className += &apos;photo_center&apos;;</div><div class="line">    photo_center = photos.splice(n,1)[0];</div><div class="line">    </div><div class="line">    //把海报分为左、右两个分区</div><div class="line">    var photos_left = photos.splice(0,Math.ceil(photos.length/2));</div><div class="line">    var photos_rigth = photos;\</div><div class="line">    </div><div class="line">    for(s in photo_left)&#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    for(s in photo_right)&#123;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>待续……</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.imooc.com/video/7195" target="_blank" rel="external">慕课视频</a></p>
+<p><a href="http://www.17sucai.com/preview/1/2014-12-23/ScatteredPolaroidsGallery/index.html" target="_blank" rel="external">参考案例</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我和咖啡(*^_^*)<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/tencentpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -197,229 +298,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/Fawziasfq/2017/03/15/图片画廊案例详解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/11/解决跨域问题的N种方法/" class="archive-article-date">
-  	<time datetime="2017-03-11T12:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-11</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/11/解决跨域问题的N种方法/">解决跨域问题的N种方法</a>
-    </h1>
+  
+    <a href="/2017/03/11/解决跨域问题的N种方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">解决跨域问题的N种方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/10/深信服一面/" class="archive-article-date">
-  	<time datetime="2017-03-10T13:54:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/10/深信服一面/">深信服一面</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/07/Webpack学习笔记/" class="archive-article-date">
-  	<time datetime="2017-03-07T13:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/Webpack学习笔记/">Webpack学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/06/重绘和重排的性能优化/" class="archive-article-date">
-  	<time datetime="2017-03-06T14:17:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/06/重绘和重排的性能优化/">重绘和重排的性能优化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/02/字符串和正则表达式/" class="archive-article-date">
-  	<time datetime="2017-03-02T13:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/02/字符串和正则表达式/">字符串和正则表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-01T07:32:19.559Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -442,8 +402,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
