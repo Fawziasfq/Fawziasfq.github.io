@@ -8,28 +8,15 @@
   <link rel="dns-prefetch" href="https://github.com/Fawziasfq">
   <title>解决跨域问题的N种方法 | 孙凤琴的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.什么是跨域
-概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。
-
-对于端口和协议的不同，只能通过后台来解决。
-如何解决跨域问题？">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="article">
 <meta property="og:title" content="解决跨域问题的N种方法">
 <meta property="og:url" content="https://github.com/Fawziasfq/2017/03/11/解决跨域问题的N种方法/index.html">
 <meta property="og:site_name" content="孙凤琴的博客">
-<meta property="og:description" content="1.什么是跨域
-概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。
-
-对于端口和协议的不同，只能通过后台来解决。
-如何解决跨域问题？">
-<meta property="og:updated_time" content="2017-03-11T12:35:32.749Z">
+<meta property="og:image" content="http://p1.bqimg.com/4851/994da2b9c848e9da.jpg">
+<meta property="og:updated_time" content="2017-03-17T14:29:05.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决跨域问题的N种方法">
-<meta name="twitter:description" content="1.什么是跨域
-概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。
-
-对于端口和协议的不同，只能通过后台来解决。
-如何解决跨域问题？">
+<meta name="twitter:image" content="http://p1.bqimg.com/4851/994da2b9c848e9da.jpg">
   
     <link rel="alternative" href="/atom.xml" title="孙凤琴的博客" type="application/atom+xml">
   
@@ -181,11 +168,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-什么是跨域"><a href="#1-什么是跨域" class="headerlink" title="1.什么是跨域"></a>1.什么是跨域</h3><blockquote>
+        <p><img src="http://p1.bqimg.com/4851/994da2b9c848e9da.jpg" alt="kuayu"><br><a id="more"></a></p>
+<h3 id="1-什么是跨域"><a href="#1-什么是跨域" class="headerlink" title="1.什么是跨域"></a>1.什么是跨域</h3><blockquote>
 <p>概念：只要协议、域名、端口有任何一个不同，都被当作是不同的域。</p>
 </blockquote>
 <p>对于端口和协议的不同，只能通过后台来解决。</p>
-<h3 id="如何解决跨域问题？"><a href="#如何解决跨域问题？" class="headerlink" title="如何解决跨域问题？"></a>如何解决跨域问题？<a id="more"></a></h3><h4 id="1-通过jsonp跨域"><a href="#1-通过jsonp跨域" class="headerlink" title="1.通过jsonp跨域"></a>1.通过jsonp跨域</h4><blockquote>
+<h3 id="如何解决跨域问题？"><a href="#如何解决跨域问题？" class="headerlink" title="如何解决跨域问题？"></a>如何解决跨域问题？</h3><h4 id="1-通过jsonp跨域"><a href="#1-通过jsonp跨域" class="headerlink" title="1.通过jsonp跨域"></a>1.通过jsonp跨域</h4><blockquote>
 <p>jsonp：是资料格式的一种“使用模式”，可以让网页从别的网域获取资料；<br>也叫做填充式JSON，是应用JSON的一种新方法，只不过是被包含在函数调用中的JSON。<br>是一种非正式协议，该协议的一个要点就是允许用户传递一个callback参数给服务器端，然后服务器端返回数据时会将这个callback参数座位函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据了。</p>
 </blockquote>
 <p>原理是：动态插入script标签，通过script标签引入一个js文件，这个js文件载入成功后会执行我们在url参数中指定的函数，并且会把我们需要的json数据作为参数传入。</p>
