@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/Fawziasfq">
-  <title>Archives: 2017/3 | 孙凤琴的博客</title>
+  <title>js继承方式详解 | 孙凤琴的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="少壮不努力，老大徒伤悲。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="孙凤琴的博客">
-<meta property="og:url" content="https://github.com/Fawziasfq/archives/2017/03/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="js继承方式详解">
+<meta property="og:url" content="https://github.com/Fawziasfq/2017/03/17/js继承方式详解/index.html">
 <meta property="og:site_name" content="孙凤琴的博客">
-<meta property="og:description" content="少壮不努力，老大徒伤悲。">
+<meta property="og:image" content="https://github.com/Fawziasfq/Fawziasfq/2017/03/17/js继承方式详解/fly.jpg">
+<meta property="og:updated_time" content="2017-03-17T14:11:55.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="孙凤琴的博客">
-<meta name="twitter:description" content="少壮不努力，老大徒伤悲。">
+<meta name="twitter:title" content="js继承方式详解">
+<meta name="twitter:image" content="https://github.com/Fawziasfq/Fawziasfq/2017/03/17/js继承方式详解/fly.jpg">
   
     <link rel="alternative" href="/atom.xml" title="孙凤琴的博客" type="application/atom+xml">
   
@@ -148,36 +148,111 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-js继承方式详解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      js继承方式详解
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/17/js继承方式详解/" class="archive-article-date">
+
+        
+        <a href="/2017/03/17/js继承方式详解/" class="archive-article-date">
   	<time datetime="2017-03-17T14:02:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/17/js继承方式详解/">js继承方式详解</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/Fawziasfq/2017/03/17/js继承方式详解/fly.jpg" alt="fly"><br><a id="more"></a></p>
+<h2 id="js继承的概念"><a href="#js继承的概念" class="headerlink" title="js继承的概念"></a>js继承的概念</h2><p>常用方式</p>
+<ul>
+<li>原型链继承（对象间的继承）</li>
+<li>类式继承（构造函数间的继承）</li>
+</ul>
+<p>OO语言支持两种继承方式：接口继承和实现继承，然而接口继承需要签名，而js中没有，所以只能支持实现继承，主要是依靠原型链（prototype机制），或者apply和call方法实现。</p>
+<p>如何实现自定义对象：</p>
+<ul>
+<li>可以把prototype看作是一个模板，新创建的自定义对象都是这个模板的一个拷贝</li>
+<li>js可以通过<strong>构造函数</strong>和<strong>原型</strong>的方式模拟实现类的功能</li>
+<li>js类式继承的实现也是依靠原型链来实现的</li>
+</ul>
+<h2 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h2><p>缺点：字面量重写会中断关系，使用引用类型的原型，并且子类型无法给超类型传递参数</p>
+<p>思想：利用原型让一个引用类型继承另一个引用类型的属性和方法（借助已有的对象创建心得对象，将子类的原型指向父类，就相当于加入了父类这条原型链）。</p>
+<p>构造函数、原型和实例的关系：每个构造函数都包含一个原型对象，原型对象都包含一个指向构造函数的指针，实例对象都包含一个指向原型对象的内部指针。</p>
+<p>为了让子类继承父类的属性（也包括方法），首先要定义一个构造函数。然后将父类的新实例赋值给构造函数的原型，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function Parent() &#123;</div><div class="line">	this.name = &apos;mike&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Child() &#123;</div><div class="line">	this.age = 12;</div><div class="line">&#125;</div><div class="line">Child.prototype = new Parent(); //Child通过原型链继承Parent</div><div class="line"></div><div class="line">var test = new Child();</div><div class="line">console.log(test.age); //得到被继承的属性</div><div class="line">console.log(test.name); //原型链继承</div><div class="line"></div><div class="line">function Brother() &#123;</div><div class="line">	this.weight = 40;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Brother.prototype = new Child() //继续原型链继承</div><div class="line">var brother = new Brother();</div><div class="line"></div><div class="line">console.log(brother.name);</div><div class="line">console.log(brother.age);</div><div class="line">console.log(brother.weight);</div></pre></td></tr></table></figure></p>
+<h3 id="确定原型和实例的关系"><a href="#确定原型和实例的关系" class="headerlink" title="确定原型和实例的关系"></a>确定原型和实例的关系</h3><p>两种方法：</p>
+<ul>
+<li>instanceof</li>
+<li>isPrototypeof()<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">console.log(brother instanceof Object);</div><div class="line">console.log(brother instanceof Parent);</div><div class="line">console.log(brother instanceof Child);</div><div class="line">console.log(test instanceof Child);</div><div class="line">console.log(test instanceof Parent);</div><div class="line">console.log(test instanceof Object); //以上全部返回true</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>只要是原型链中出现过的原型都可以说是原型链派生的实例的原型，因此都会返回true</p>
+<p>在js中，被继承的函数称为超类（父类，基类），继承的函数被称为子类型（子类，派生类）</p>
+<p>存在问题：</p>
+<ul>
+<li>字面量重写原型会中断关系，使用引用类型的原型</li>
+<li>子类型还无法给超类型传递参数</li>
+<li>伪类解决了引用共享和超类型无法传参的问题——借用构造函数</li>
+</ul>
+<h3 id="借用构造函数（类式继承）"><a href="#借用构造函数（类式继承）" class="headerlink" title="借用构造函数（类式继承）"></a>借用构造函数（类式继承）</h3><p>借用构造函数解决了刚才的两种问题，但是没有原型，复用无从谈起。所以我们需要原型链+构造函数的模式，这个模式称为组合继承</p>
+<p>思想：在子类型构造函数的内部调用超类型的构造函数，一般都是组合使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function Parent(age) &#123;</div><div class="line">	this.name = [&apos;mike&apos;, &apos;jack&apos;, &apos;smith&apos;];</div><div class="line">	this.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Child(age) &#123;</div><div class="line">	Parent.call(this, age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">var test = new Child(21);</div><div class="line">console.log(test.age);</div><div class="line">test.name.push(&apos;bill&apos;);</div><div class="line">console.log(test.name);</div></pre></td></tr></table></figure></p>
+<p>问题：没有原型，复用无从谈起，因此需要<strong>原型链+借用构造函数</strong>的模式，称之为组合继承。</p>
+<h3 id="组合式继承"><a href="#组合式继承" class="headerlink" title="组合式继承"></a>组合式继承</h3><p>组合式继承是比较常用的一种继承方法，其背后的思路是，使用原型链实现对原型属性和方法的继承，而通过对借用构造函数来实现对实例属性的继承。这样，既通过在原型上定义方法实现了函数复用，又保证了让每个实例都有它自己的属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function Parent(age) &#123;</div><div class="line">	this.name = [&apos;mike&apos;, &apos;jack&apos;, &apos;smith&apos;];</div><div class="line">	this.age = age;</div><div class="line">&#125;</div><div class="line">Parent.prototype.run = function() &#123; //使用原型链实现对原型属性和方法的继承</div><div class="line">	return this.name + &apos; are both &apos; + this.age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Child(age) &#123; //通过借用构造函数来实现对实例属性的继承</div><div class="line">	Parent.call(this, age); //对象冒充，给超类传参</div><div class="line">&#125;</div><div class="line"></div><div class="line">Child.prototype = new Parent(); //原型链继承</div><div class="line">var test = new Child(21); //写Parent(21)也行</div><div class="line">console.log(test.run()); //mike,jack,smith are both 21</div></pre></td></tr></table></figure></p>
+<p>组合式继承是一种比较常用的继承方法，通过原型链继承原型的属性和方法，通过借用构造函数实现对实例属性的继承。</p>
+<p>这样既能在原型上定义方法实现函数复用，又能保证每个实例都有自己的属性。</p>
+<p>call()的用法：调用一个对象的一个方法，以另一个对象替换当前对象</p>
+<h2 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h2><p>这种继承借助原型并基于已有对象创建新对象，同时还不用创建自定义类型的方式称为<strong>原型式继承</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//原型式继承</div><div class="line">function obj(o) &#123; //工厂模式</div><div class="line">	function F() &#123;&#125;;</div><div class="line">	F.prototype = o;</div><div class="line">	return new F();</div><div class="line">&#125;</div><div class="line"></div><div class="line">var box = &#123;</div><div class="line">	name: &quot;fawziasfq&quot;,</div><div class="line">	arr: [&apos;brother&apos;, &apos;mother&apos;, &apos;father&apos;]</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var b1 = obj(box);</div><div class="line">console.log(b1.name); //&quot;fawziasfq&quot;</div><div class="line"></div><div class="line">b1.name = &quot;mike&quot;;</div><div class="line">console.log(b1.name);</div><div class="line"></div><div class="line">console.log(b1.arr);</div><div class="line">b1.arr.push(&apos;parents&apos;);</div><div class="line">console.log(b1.arr);</div><div class="line"></div><div class="line">var b2 = new obj(box);</div><div class="line">console.log(b2.name); //fawziasfq</div><div class="line">console.log(b2.arr); //[ &apos;brother&apos;, &apos;mother&apos;, &apos;father&apos;, &apos;parents&apos; ]</div></pre></td></tr></table></figure>
+<p>原型式继承首先在obj()函数内部黄建一个临时性的构造函数，然后将传入的对象作为这个构造函数的原型，然后返回这个临时类型的一个新实例</p>
+<h3 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h3><p>这种继承方式是原型式+工厂模式，目的是为了封装创建的过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function create(o) &#123;</div><div class="line">	var f = obj(o);</div><div class="line">	f.run = function() &#123;</div><div class="line">		return this.arr; //同样会共享引用</div><div class="line">	&#125;;</div><div class="line">	return f;</div><div class="line">&#125;</div><div class="line">var b1 = new create(box);</div><div class="line">console.log(b1.run());</div></pre></td></tr></table></figure></p>
+<h3 id="组合式继承的小问题"><a href="#组合式继承的小问题" class="headerlink" title="组合式继承的小问题"></a>组合式继承的小问题</h3><p>组合式继承是js最常用的继承模式，但组合继承的超类型在使用过程中会被调用两次：依次是创建子类型的时候，另一次是在子类型构造函数内部。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function Parent(name) &#123;</div><div class="line">	this.name = name;</div><div class="line">	this.arr = [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Parent.prototype.run = function() &#123;</div><div class="line">	return this.name;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function Child(name, age) &#123;</div><div class="line">	Parent.call(this, age); //第二次调用</div><div class="line">	this.age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Child.prototype = new Parent(); //第一次调用</div><div class="line"></div><div class="line">var c = new Child(&quot;fawzia&quot;, &quot;22&quot;);</div><div class="line"></div><div class="line">console.log(c.run());</div></pre></td></tr></table></figure></p>
+<h3 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h3><p>寄生组合式继承解决这个问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    function obj(o)&#123;</div><div class="line">        function F()&#123;&#125;</div><div class="line">        F.prototype = o;</div><div class="line">        return new F();</div><div class="line">    &#125;</div><div class="line">    function create(parent,test)&#123;</div><div class="line">        var f = obj(parent.prototype);//创建对象</div><div class="line">        f.constructor = test;//增强对象</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function Parent(name)&#123;</div><div class="line">        this.name = name;</div><div class="line">        this.arr = [&apos;brother&apos;,&apos;sister&apos;,&apos;parents&apos;];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Parent.prototype.run = function () &#123;</div><div class="line">        return this.name;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    function Child(name,age)&#123;</div><div class="line">        Parent.call(this,name);</div><div class="line">        this.age =age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    inheritPrototype(Parent,Child);//通过这里实现继承</div><div class="line"></div><div class="line">    var test = new Child(&apos;trigkit4&apos;,21);</div><div class="line">    test.arr.push(&apos;nephew&apos;);</div><div class="line">    alert(test.arr);//</div><div class="line">    alert(test.run());//只共享了方法</div><div class="line"></div><div class="line">    var test2 = new Child(&apos;jack&apos;,22);</div><div class="line">    alert(test2.arr);//引用问题解决</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="call和apply"><a href="#call和apply" class="headerlink" title="call和apply"></a>call和apply</h2><p>全局apply和call可以用来改变函数中this的指向<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 定义一个全局函数</div><div class="line">    function foo() &#123;</div><div class="line">        console.log(this.fruit);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 定义一个全局变量</div><div class="line">    var fruit = &quot;apple&quot;;</div><div class="line">    // 自定义一个对象</div><div class="line">    var pack = &#123;</div><div class="line">        fruit: &quot;orange&quot;</div><div class="line">    &#125;;</div><div class="line">    </div><div class="line">    // 等价于window.foo();</div><div class="line">    foo.apply(window);  // &quot;apple&quot;,此时this等于window</div><div class="line">    // 此时foo中的this === pack</div><div class="line">    foo.apply(pack);    // &quot;orange&quot;</div></pre></td></tr></table></figure></p>
+<p>待更新……（因为自己看了之后还有点晕，感觉之前看高程的时候还是挺清楚的）</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我和咖啡(*^_^*)<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/tencentpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,275 +264,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://github.com/Fawziasfq/2017/03/17/js继承方式详解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/15/图片画廊案例详解/" class="archive-article-date">
-  	<time datetime="2017-03-15T13:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/15/图片画廊案例详解/">图片画廊案例详解</a>
-    </h1>
+  
+    <a href="/2017/03/15/图片画廊案例详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">图片画廊案例详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CSS3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">HTML5</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/11/解决跨域问题的N种方法/" class="archive-article-date">
-  	<time datetime="2017-03-11T12:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/11/解决跨域问题的N种方法/">解决跨域问题的N种方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/10/深信服一面/" class="archive-article-date">
-  	<time datetime="2017-03-10T13:54:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/10/深信服一面/">深信服一面</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/07/Webpack学习笔记/" class="archive-article-date">
-  	<time datetime="2017-03-07T13:27:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/Webpack学习笔记/">Webpack学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">工具学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/06/重绘和重排的性能优化/" class="archive-article-date">
-  	<time datetime="2017-03-06T14:17:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/06/重绘和重排的性能优化/">重绘和重排的性能优化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/02/字符串和正则表达式/" class="archive-article-date">
-  	<time datetime="2017-03-02T13:58:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/02/字符串和正则表达式/">字符串和正则表达式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-01T07:32:19.559Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -480,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
